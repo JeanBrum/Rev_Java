@@ -1,6 +1,7 @@
 package projeto;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /*
 autor: Jonas Dhein
@@ -72,6 +73,10 @@ public class Funcoes {
         //a linha de código a seguir remove a última virgula da String
         resultado = resultado.substring(0, resultado.length() - 1);
         return resultado;
+    }
+    
+    public static void validar(){
+        JOptionPane.showMessageDialog(null, "Não foi possível realizar a transferência");
     }
    
     

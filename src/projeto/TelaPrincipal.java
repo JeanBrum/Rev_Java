@@ -5,6 +5,8 @@
  */
 package projeto;
 
+import static projeto.Funcoes.validar;
+
 /**
  *
  * @author jonasdhein
@@ -154,21 +156,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnTransfere1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfere1ActionPerformed
         try{
             double transf = Double.parseDouble(txtTransferencia1.getText());
-            if(pessoa1.credito(transf) == true){
-                pessoa2.debito(transf);
-            }
             lblValor1.setText(String.valueOf(pessoa1.getValorConta()));
             lblValor2.setText(String.valueOf(pessoa2.getValorConta()));
-            txtTransferencia1.setText("0");
+            
+            if(pessoa1.credito(transf) == true){
+                pessoa2.debito(transf);
+                txtTransferencia1.setText("0");
+            } else {
+                validar();
+            }
+            
+            
         
         }catch(Exception ex){
-            System.out.println("Erro: " + ex.getMessage());
+            validar();
+            txtTransferencia1.setText("0");
         }
         
     }//GEN-LAST:event_btnTransfere1ActionPerformed
 
     private void btnTransfere2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfere2ActionPerformed
-        // TODO add your handling code here:
+        try{
+            double transf = Double.parseDouble(txtTransferencia2.getText());
+            lblValor1.setText(String.valueOf(pessoa1.getValorConta()));
+            lblValor2.setText(String.valueOf(pessoa2.getValorConta()));
+            
+            if(pessoa2.credito(transf) == true){
+                pessoa1.debito(transf);
+                txtTransferencia2.setText("0");
+            } else {
+                validar();
+            }
+            
+            
+        
+        }catch(Exception ex){
+            validar();
+            txtTransferencia2.setText("0");
+        }
     }//GEN-LAST:event_btnTransfere2ActionPerformed
 
     /**
